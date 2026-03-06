@@ -9,160 +9,68 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#07090E;
-  --bg2:#0B0E15;
-  --bg3:#10141D;
-  --border:#181D28;
-  --border2:#1F2636;
-  --text:#B8C4D0;
-  --text2:#6B7A8D;
-  --text3:#2E3A4A;
-  --accent:#1A6EFF;
-  --accent2:#0049CC;
-  --green:#12C97A;
-  --yellow:#F2A60D;
-  --red:#F04747;
-  --purple:#8B5CF6;
+  --bg:#07090E;--bg2:#0B0E15;--bg3:#10141D;
+  --border:#181D28;--border2:#1F2636;
+  --text:#B8C4D0;--text2:#6B7A8D;--text3:#2E3A4A;
+  --accent:#1A6EFF;--green:#12C97A;--yellow:#F2A60D;--red:#F04747;--purple:#8B5CF6;
   --white:#DCE8F4;
 }
 body{background:var(--bg);color:var(--text);font-family:'Syne',sans-serif;min-height:100vh;overflow-x:hidden}
-
-/* ─── NAV ─── */
-nav{
-  height:52px;border-bottom:1px solid var(--border);
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 24px;position:sticky;top:0;background:var(--bg);z-index:200;
-}
+nav{height:52px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 24px;position:sticky;top:0;background:var(--bg);z-index:200}
 .nav-logo{display:flex;align-items:center;gap:10px}
-.nav-icon{
-  width:28px;height:28px;border-radius:6px;
-  background:linear-gradient(135deg,var(--accent),#7C3AED);
-  display:flex;align-items:center;justify-content:center;
-  font-size:13px;flex-shrink:0;
-}
-.nav-title{font-weight:800;font-size:13px;color:var(--white);letter-spacing:-0.01em}
+.nav-icon{width:28px;height:28px;border-radius:6px;background:linear-gradient(135deg,var(--accent),#7C3AED);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+.nav-title{font-weight:800;font-size:13px;color:var(--white)}
 .nav-sub{font-size:10px;color:var(--text3);margin-left:2px;font-family:'IBM Plex Mono',monospace}
 #nav-actions{display:flex;gap:6px}
-
-/* ─── BUTTONS ─── */
-.btn{
-  border:none;border-radius:5px;padding:6px 14px;
-  font-size:11px;font-weight:700;cursor:pointer;
-  transition:all .15s;font-family:'Syne',sans-serif;letter-spacing:.01em;
-}
+.btn{border:none;border-radius:5px;padding:6px 14px;font-size:11px;font-weight:700;cursor:pointer;transition:all .15s;font-family:'Syne',sans-serif}
 .btn:disabled{opacity:.35;cursor:default}
-.btn-primary{background:linear-gradient(135deg,var(--accent),#7C3AED);color:#fff}
-.btn-primary:hover:not(:disabled){filter:brightness(1.1)}
 .btn-export{background:var(--bg3);border:1px solid var(--border2);color:#60A5FA}
 .btn-export:hover{background:var(--bg2)}
 .btn-ghost{background:transparent;border:1px solid var(--border2);color:var(--text2)}
-.btn-ghost:hover{border-color:var(--border2);color:var(--text)}
-
-/* ─── PAGE UPLOAD ─── */
-#page-upload{max-width:760px;margin:48px auto 0;padding:0 24px 60px}
+.btn-ghost:hover{color:var(--text)}
+#page-upload{max-width:780px;margin:48px auto 0;padding:0 24px 60px}
 #page-results{padding:16px 24px}
 .page{display:none}.page.active{display:block}
-
 h1{font-size:28px;font-weight:800;color:var(--white);letter-spacing:-0.04em;text-align:center;margin-bottom:5px}
-.subtitle{color:var(--text3);font-size:11px;text-align:center;margin-bottom:32px;font-family:'IBM Plex Mono',monospace;letter-spacing:.04em}
-
+.subtitle{color:var(--text3);font-size:11px;text-align:center;margin-bottom:28px;font-family:'IBM Plex Mono',monospace;letter-spacing:.04em}
 .upload-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:14px}
 .col-label{font-size:10px;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:.09em;display:block;margin-bottom:7px}
 .file-list{display:flex;flex-direction:column;gap:3px;margin-bottom:5px}
-.file-item{
-  display:flex;align-items:center;justify-content:space-between;
-  background:var(--bg2);border:1px solid var(--border);border-radius:5px;padding:6px 10px;
-}
+.file-item{display:flex;align-items:center;justify-content:space-between;background:var(--bg2);border:1px solid var(--border);border-radius:5px;padding:6px 10px}
 .file-item span{font-size:11px;color:var(--text2);max-width:210px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:'IBM Plex Mono',monospace}
 .file-item .ok{color:var(--green);font-size:10px;margin-right:5px}
 .file-item .rm{background:none;border:none;color:var(--text3);cursor:pointer;font-size:16px;line-height:1;padding:0 2px;transition:color .1s}
 .file-item .rm:hover{color:var(--red)}
-
-.drop-zone{
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;
-  padding:22px 14px;background:var(--bg2);
-  border:2px dashed var(--border2);border-radius:8px;cursor:pointer;
-  transition:all .15s;min-height:90px;text-align:center;
-}
+.drop-zone{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:22px 14px;background:var(--bg2);border:2px dashed var(--border2);border-radius:8px;cursor:pointer;transition:all .15s;min-height:90px;text-align:center}
 .drop-zone:hover,.drop-zone.drag{background:#0D1525;border-color:var(--accent)}
-.dz-plus{font-size:20px;color:var(--text3)}
-.dz-label{font-size:12px;font-weight:700;color:var(--text2)}
+.dz-plus{font-size:20px;color:var(--text3)}.dz-label{font-size:12px;font-weight:700;color:var(--text2)}
 .dz-sub{font-size:9px;color:var(--text3);margin-top:1px;font-family:'IBM Plex Mono',monospace}
-.dz-tag{
-  font-size:9px;font-weight:700;padding:2px 8px;border-radius:3px;
-  background:#0A1629;color:var(--accent);letter-spacing:.07em;margin-top:3px;
-  font-family:'IBM Plex Mono',monospace;border:1px solid #162040;
-}
-
-/* ─── FEE BAR ─── */
-.fee-bar{
-  background:var(--bg2);border:1px solid var(--border);border-radius:8px;
-  padding:13px 18px;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;
-}
-.fee-label{font-size:11px;font-weight:700;color:var(--text2)}
-.fee-sub{font-size:10px;color:var(--text3);margin-top:2px;font-family:'IBM Plex Mono',monospace}
+.dz-tag{font-size:9px;font-weight:700;padding:2px 8px;border-radius:3px;background:#0A1629;color:var(--accent);letter-spacing:.07em;margin-top:3px;font-family:'IBM Plex Mono',monospace;border:1px solid #162040}
+.fee-bar{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:13px 18px;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between}
+.fee-label{font-size:11px;font-weight:700;color:var(--text2)}.fee-sub{font-size:10px;color:var(--text3);margin-top:2px;font-family:'IBM Plex Mono',monospace}
 .fee-val{font-size:22px;font-weight:800;color:var(--accent);font-family:'IBM Plex Mono',monospace;min-width:50px;text-align:right}
 #fee-slider{width:90px;accent-color:var(--accent)}
-
-/* ─── RUN BTN ─── */
-.run-btn{
-  width:100%;padding:14px;
-  background:linear-gradient(135deg,var(--accent),#7C3AED);
-  border:none;border-radius:8px;cursor:pointer;
-  font-size:13px;font-weight:800;color:#fff;margin-top:6px;
-  font-family:'Syne',sans-serif;letter-spacing:.02em;
-  transition:all .2s;
-}
+.run-btn{width:100%;padding:14px;background:linear-gradient(135deg,var(--accent),#7C3AED);border:none;border-radius:8px;cursor:pointer;font-size:13px;font-weight:800;color:#fff;margin-top:6px;font-family:'Syne',sans-serif;transition:all .2s}
 .run-btn:disabled{background:var(--bg3);color:var(--text3);cursor:default}
 .run-btn:not(:disabled):hover{filter:brightness(1.1);transform:translateY(-1px)}
-
-/* ─── UPLOAD LOG ─── */
-.info-box{
-  background:var(--bg2);border:1px solid var(--border);border-radius:7px;
-  padding:12px 16px;margin-bottom:14px;font-size:11px;line-height:1.7;
-  font-family:'IBM Plex Mono',monospace;color:var(--text2);
-}
-.info-box strong{color:var(--green)}
-.info-box .warn{color:var(--yellow)}
-
-/* ─── KPIs ─── */
 .kpi-row{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
-.kpi{
-  background:var(--bg2);border:1px solid var(--border);border-radius:8px;
-  padding:10px 15px;cursor:pointer;min-width:88px;flex-shrink:0;
-  transition:all .15s;
-}
+.kpi{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:10px 15px;cursor:pointer;min-width:88px;flex-shrink:0;transition:all .15s}
 .kpi.active{border-color:var(--kc,var(--accent));background:var(--bg3)}
 .kpi:hover:not(.no-click){border-color:var(--border2)}
 .kpi .kl{font-size:9px;color:var(--text2);font-weight:700;text-transform:uppercase;letter-spacing:.09em;font-family:'IBM Plex Mono',monospace}
 .kpi .kv{font-size:20px;font-weight:800;font-family:'IBM Plex Mono',monospace;color:var(--kc,var(--white));line-height:1.2;margin-top:2px}
 .kpi .ks{font-size:10px;color:var(--text3);margin-top:1px;font-family:'IBM Plex Mono',monospace}
 .kpi.no-click{cursor:default}
-
-/* ─── FILTERS ─── */
 .filters{display:flex;gap:8px;margin-bottom:10px;align-items:center;flex-wrap:wrap}
-#search-input{
-  flex:1;min-width:200px;background:var(--bg2);border:1px solid var(--border);
-  color:var(--text);border-radius:5px;padding:7px 11px;font-size:11px;outline:none;
-  font-family:'IBM Plex Mono',monospace;transition:border-color .15s;
-}
+#search-input{flex:1;min-width:200px;background:var(--bg2);border:1px solid var(--border);color:var(--text);border-radius:5px;padding:7px 11px;font-size:11px;outline:none;font-family:'IBM Plex Mono',monospace}
 #search-input:focus{border-color:var(--border2)}
-#source-select{
-  background:var(--bg2);border:1px solid var(--border);color:var(--text2);
-  border-radius:5px;padding:7px 10px;font-size:10px;outline:none;font-family:'IBM Plex Mono',monospace;
-}
+.fsel{background:var(--bg2);border:1px solid var(--border);color:var(--text2);border-radius:5px;padding:7px 10px;font-size:10px;outline:none;font-family:'IBM Plex Mono',monospace}
 .count-label{font-size:10px;color:var(--text3);font-family:'IBM Plex Mono',monospace;white-space:nowrap}
-
-/* ─── TABLE ─── */
 .results-layout{display:flex;gap:0}
 .table-wrap{border:1px solid var(--border);border-radius:8px;overflow:hidden;overflow-x:auto;flex:1}
-table{width:100%;border-collapse:collapse;font-size:11px;min-width:1100px}
+table{width:100%;border-collapse:collapse;font-size:11px;min-width:1200px}
 thead tr{background:#090C14;border-bottom:1px solid var(--border)}
-thead th{
-  padding:8px 10px;font-size:9px;font-weight:700;color:var(--text3);
-  letter-spacing:.07em;text-transform:uppercase;white-space:nowrap;text-align:left;
-  font-family:'IBM Plex Mono',monospace;
-}
+thead th{padding:8px 10px;font-size:9px;font-weight:700;color:var(--text3);letter-spacing:.07em;text-transform:uppercase;white-space:nowrap;text-align:left;font-family:'IBM Plex Mono',monospace}
 thead th.r{text-align:right}
 tbody tr{border-bottom:1px solid #080B12;cursor:pointer;transition:background .1s}
 tbody tr:nth-child(odd){background:var(--bg)}
@@ -171,65 +79,36 @@ tbody tr:hover,tbody tr.selected{background:#0D1829}
 td{padding:7px 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:160px}
 td.r{text-align:right;font-family:'IBM Plex Mono',monospace}
 td.mono{font-family:'IBM Plex Mono',monospace;font-size:10px}
-.badge{
-  display:inline-flex;align-items:center;gap:3px;
-  padding:2px 8px;border-radius:99px;font-size:9px;font-weight:700;
-  white-space:nowrap;font-family:'IBM Plex Mono',monospace;letter-spacing:.03em;
-}
-.src-tag{
-  font-size:9px;font-weight:700;padding:2px 6px;border-radius:3px;
-  background:#0A1525;color:var(--accent);font-family:'IBM Plex Mono',monospace;letter-spacing:.04em;
-  border:1px solid #14274D;
-}
+.badge{display:inline-flex;align-items:center;gap:3px;padding:2px 8px;border-radius:99px;font-size:9px;font-weight:700;white-space:nowrap;font-family:'IBM Plex Mono',monospace}
 .more-row{text-align:center;padding:11px;color:var(--text3);font-size:10px;border-top:1px solid var(--border);background:var(--bg);font-family:'IBM Plex Mono',monospace}
 .empty-row{text-align:center;padding:48px;color:var(--text3)}
-
-/* ─── DETAIL PANEL ─── */
-#detail-panel{
-  width:295px;flex-shrink:0;background:#090D16;
-  border-top:1px solid var(--border);border-right:1px solid var(--border);border-bottom:1px solid var(--border);
-  border-radius:0 8px 8px 0;padding:15px;
-  overflow-y:auto;max-height:calc(100vh - 135px);
-  position:sticky;top:54px;display:none;
-}
+#detail-panel{width:305px;flex-shrink:0;background:#090D16;border-top:1px solid var(--border);border-right:1px solid var(--border);border-bottom:1px solid var(--border);border-radius:0 8px 8px 0;padding:15px;overflow-y:auto;max-height:calc(100vh - 135px);position:sticky;top:54px;display:none}
 #detail-panel.open{display:block}
 .dp-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
 .dp-title{font-weight:800;color:var(--white);font-size:12px}
-.dp-close{background:none;border:none;color:var(--text3);cursor:pointer;font-size:18px;transition:color .1s}
+.dp-close{background:none;border:none;color:var(--text3);cursor:pointer;font-size:18px}
 .dp-close:hover{color:var(--text)}
-.dp-section-title{
-  font-size:9px;font-weight:700;color:var(--text3);letter-spacing:.1em;
-  text-transform:uppercase;margin:14px 0 6px;font-family:'IBM Plex Mono',monospace;
-}
+.dp-sec{font-size:9px;font-weight:700;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;margin:14px 0 6px;font-family:'IBM Plex Mono',monospace}
 .dp-row{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border)}
-.dp-key{font-size:10px;color:var(--text3);flex-shrink:0;font-family:'IBM Plex Mono',monospace}
-.dp-val{font-size:10px;color:var(--text);text-align:right;max-width:160px;word-break:break-all}
+.dp-key{font-size:10px;color:var(--text3);flex-shrink:0;font-family:'IBM Plex Mono',monospace;padding-right:8px}
+.dp-val{font-size:10px;color:var(--text);text-align:right;word-break:break-word;max-width:170px}
+.elt-list{margin-top:4px;display:flex;flex-direction:column;gap:2px}
+.elt-item{display:flex;justify-content:space-between;align-items:center;background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:4px 8px;gap:6px}
+.elt-lib{font-size:9px;color:var(--text2);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:'IBM Plex Mono',monospace}
+.elt-amt{font-size:10px;font-family:'IBM Plex Mono',monospace;white-space:nowrap;font-weight:700}
 .fee-box{margin-top:14px;background:var(--bg2);border-radius:7px;padding:13px;border:1px solid var(--border)}
 .fee-box-title{font-size:9px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:9px;font-family:'IBM Plex Mono',monospace}
-.fee-row{display:flex;justify-content:space-between;margin-bottom:5px}
-.fee-row span:first-child{font-size:11px;color:var(--text2)}
-.fee-row span:last-child{font-size:11px;font-family:'IBM Plex Mono',monospace}
-.fee-total{display:flex;justify-content:space-between;margin-top:7px;padding-top:7px;border-top:1px solid var(--border)}
-.fee-ht{color:var(--purple);font-weight:700;font-size:12px;font-family:'IBM Plex Mono',monospace}
-.fee-fees{color:var(--accent);font-weight:800;font-size:13px;font-family:'IBM Plex Mono',monospace}
-
-/* ─── LOG CHIPS ─── */
+.fr{display:flex;justify-content:space-between;margin-bottom:5px}
+.fr span:first-child{font-size:11px;color:var(--text2)}
+.fr span:last-child{font-size:11px;font-family:'IBM Plex Mono',monospace}
+.ft{display:flex;justify-content:space-between;margin-top:7px;padding-top:7px;border-top:1px solid var(--border)}
+.match-bar{height:3px;border-radius:2px;background:var(--border2);margin-top:3px;overflow:hidden}
+.match-fill{height:100%;border-radius:2px}
 .log-chips{display:flex;gap:5px;flex-wrap:wrap;margin-top:10px}
-.log-chip{
-  font-size:9px;font-family:'IBM Plex Mono',monospace;padding:3px 8px;
-  border-radius:3px;border:1px solid var(--border);background:var(--bg2);
-}
-
-/* ─── DIVIDER ─── */
-.divider{height:1px;background:var(--border);margin:12px 0}
-
-/* ─── STATUS INDICATOR ─── */
-.status-dot{width:7px;height:7px;border-radius:50%;display:inline-block;margin-right:4px;vertical-align:middle}
+.log-chip{font-size:9px;font-family:'IBM Plex Mono',monospace;padding:3px 8px;border-radius:3px;border:1px solid var(--border);background:var(--bg2)}
 </style>
 </head>
 <body>
-
-<!-- NAV -->
 <nav>
   <div class="nav-logo">
     <div class="nav-icon">⚡</div>
@@ -239,78 +118,70 @@ td.mono{font-family:'IBM Plex Mono',monospace;font-size:10px}
   <div id="nav-actions"></div>
 </nav>
 
-<!-- PAGE UPLOAD -->
 <div id="page-upload" class="page active">
   <h1>Réconciliation des loyers</h1>
-  <p class="subtitle">FORMAT FRANCE · ALTAIR (RMK) · EXPORT AGICAP</p>
-
-  <div class="info-box">
-    <strong>Fichier GL (Altair/RMK)</strong> — Colonnes attendues : <code>CODNATOPR, CODCLI, NOMBAI, LIBIMM, NUMFACT, MOIREF, MONECRIDEBI, MONECRICRED, LET, DONTTVADEBI, DONTTVACRED, VALTAUTAX</code><br>
-    <span class="warn">Agicap</span> — Export revenus locatifs : <code>Type d'opération, Catégorie, Montant TTC, Intitulé, Date de règlement, Compte bancaire</code>
-  </div>
-
+  <p class="subtitle">FORMAT FRANCE · ALTAIR (RMK) · GROUPEMENT PAR NUMPIE · MATCHING AGICAP</p>
   <div class="upload-grid">
     <div>
-      <label class="col-label">Export GL / Altair (RMK)</label>
+      <label class="col-label">Export GL Altair (RMK) — France</label>
       <div id="gl-list" class="file-list"></div>
       <div class="drop-zone" id="gl-drop">
         <input type="file" id="gl-input" accept=".xlsx,.xls,.csv" multiple style="display:none">
         <span class="dz-plus">⊕</span>
         <div class="dz-label" id="gl-drop-label">Glisser ou cliquer</div>
-        <div class="dz-sub">XLSX · XLS · CSV — multi-fichiers</div>
-        <span class="dz-tag">ALTAIR · CODNATOPR · NOMBAI</span>
+        <div class="dz-sub">XLSX · XLS · multi-fichiers</div>
+        <span class="dz-tag">ALTAIR · NUMPIE · LFN/411</span>
       </div>
     </div>
     <div>
-      <label class="col-label">Export Agicap (Revenus locatifs)</label>
+      <label class="col-label">Export Agicap (Encaissements)</label>
       <div id="bank-list" class="file-list"></div>
       <div class="drop-zone" id="bank-drop">
         <input type="file" id="bank-input" accept=".xlsx,.xls,.csv" multiple style="display:none">
         <span class="dz-plus">⊕</span>
         <div class="dz-label" id="bank-drop-label">Glisser ou cliquer</div>
-        <div class="dz-sub">XLSX · XLS · CSV — multi-fichiers</div>
-        <span class="dz-tag">AGICAP · REVENUS LOCATIFS</span>
+        <div class="dz-sub">XLSX · XLS · multi-fichiers</div>
+        <span class="dz-tag">AGICAP · ENCAISSEMENTS</span>
       </div>
     </div>
   </div>
-
   <div class="fee-bar">
     <div>
       <div class="fee-label">Taux de frais de gestion</div>
-      <div class="fee-sub">appliqué sur loyer HT · encaissements confirmés</div>
+      <div class="fee-sub">sur loyer HT · encaissements confirmés Agicap</div>
     </div>
     <div style="display:flex;align-items:center;gap:12px">
       <input type="range" id="fee-slider" min="0" max="15" step="0.5" value="5">
       <span class="fee-val" id="fee-display">5%</span>
     </div>
   </div>
-
   <div id="upload-log"></div>
-  <button class="run-btn" id="run-btn" disabled onclick="runReconciliation()">
-    ⚡ Lancer la réconciliation
-  </button>
+  <button class="run-btn" id="run-btn" disabled onclick="runReconciliation()">⚡ Lancer la réconciliation</button>
 </div>
 
-<!-- PAGE RÉSULTATS -->
 <div id="page-results" class="page">
   <div class="kpi-row" id="kpi-row"></div>
   <div class="filters">
-    <input type="text" id="search-input" placeholder="🔍  Locataire, immeuble, référence, n° facture…" oninput="renderTable()">
-    <select id="source-select" onchange="renderTable()"><option value="ALL">Tous statuts</option></select>
+    <input type="text" id="search-input" placeholder="🔍  Locataire, immeuble, réf. facture, NUMPIE…" oninput="renderTable()">
+    <select id="statut-select" class="fsel" onchange="renderTable()">
+      <option value="ALL">Tous statuts</option>
+      <option value="ENCAISSE">Encaissé</option>
+      <option value="PARTIEL">Partiel</option>
+      <option value="IMPAYE">Impayé</option>
+      <option value="NON_IDENTIFIE">Non identifié</option>
+    </select>
+    <select id="imm-select" class="fsel" onchange="renderTable()"><option value="ALL">Tous immeubles</option></select>
     <span class="count-label" id="count-label">0 lignes</span>
   </div>
   <div class="results-layout">
     <div class="table-wrap">
-      <table>
-        <thead id="table-head"></thead>
-        <tbody id="table-body"></tbody>
-      </table>
+      <table><thead id="table-head"></thead><tbody id="table-body"></tbody></table>
       <div id="more-row" class="more-row" style="display:none"></div>
       <div id="empty-row" class="empty-row" style="display:none">Aucun résultat</div>
     </div>
     <div id="detail-panel">
       <div class="dp-header">
-        <span class="dp-title">Détail ligne</span>
+        <span class="dp-title">Détail facture</span>
         <button class="dp-close" onclick="closeDetail()">×</button>
       </div>
       <div id="detail-content"></div>
@@ -320,789 +191,528 @@ td.mono{font-family:'IBM Plex Mono',monospace;font-size:10px}
 </div>
 
 <script>
-// ═══════════════════════════════════════════
-// STATE
-// ═══════════════════════════════════════════
-const state = {
-  glFiles: [], bankFiles: [],
-  results: [], log: [],
-  feeRate: 5,
-  filterStatut: 'ALL',
-  selectedRow: null,
-};
+const state = { glFiles:[], bankFiles:[], results:[], log:[], feeRate:5, filterStatut:'ALL', selectedRow:null };
 
-// ═══════════════════════════════════════════
-// UPLOAD UI
-// ═══════════════════════════════════════════
-function setupDrop(dropId, inputId, listId, labelId, fileKey) {
-  const drop = document.getElementById(dropId);
-  const input = document.getElementById(inputId);
-  drop.onclick = () => input.click();
-  input.onchange = e => addFiles(fileKey, Array.from(e.target.files), listId, labelId);
-  drop.ondragover = e => { e.preventDefault(); drop.classList.add('drag'); };
-  drop.ondragleave = () => drop.classList.remove('drag');
-  drop.ondrop = e => {
-    e.preventDefault(); drop.classList.remove('drag');
-    const files = Array.from(e.dataTransfer.files).filter(f => f.name.match(/\.(xlsx|xls|csv)$/i));
-    addFiles(fileKey, files, listId, labelId);
-  };
+function setupDrop(dropId,inputId,listId,labelId,fileKey){
+  const drop=document.getElementById(dropId),input=document.getElementById(inputId);
+  drop.onclick=()=>input.click();
+  input.onchange=e=>addFiles(fileKey,Array.from(e.target.files),listId,labelId);
+  drop.ondragover=e=>{e.preventDefault();drop.classList.add('drag')};
+  drop.ondragleave=()=>drop.classList.remove('drag');
+  drop.ondrop=e=>{e.preventDefault();drop.classList.remove('drag');addFiles(fileKey,Array.from(e.dataTransfer.files).filter(f=>f.name.match(/\.(xlsx|xls|csv)$/i)),listId,labelId)};
 }
-
-function addFiles(key, files, listId, labelId) {
-  state[key].push(...files);
-  renderFileList(listId, key, labelId);
-  updateRunBtn();
+function addFiles(key,files,listId,labelId){state[key].push(...files);renderFileList(listId,key,labelId);updateRunBtn()}
+function renderFileList(listId,key,labelId){
+  const list=document.getElementById(listId);list.innerHTML='';
+  state[key].forEach((f,i)=>{const div=document.createElement('div');div.className='file-item';div.innerHTML=`<span><span class="ok">✓</span>${f.name}</span><button class="rm" onclick="removeFile('${key}','${listId}','${labelId}',${i})">×</button>`;list.appendChild(div)});
+  document.getElementById(labelId).textContent=state[key].length>0?'Ajouter des fichiers':'Glisser ou cliquer';
 }
-
-function renderFileList(listId, key, labelId) {
-  const list = document.getElementById(listId);
-  list.innerHTML = '';
-  state[key].forEach((f, i) => {
-    const div = document.createElement('div');
-    div.className = 'file-item';
-    div.innerHTML = `<span><span class="ok">✓</span>${f.name}</span><button class="rm" onclick="removeFile('${key}','${listId}','${labelId}',${i})">×</button>`;
-    list.appendChild(div);
-  });
-  document.getElementById(labelId).textContent = state[key].length > 0 ? 'Ajouter des fichiers' : 'Glisser ou cliquer';
+function removeFile(key,listId,labelId,idx){state[key].splice(idx,1);renderFileList(listId,key,labelId);updateRunBtn()}
+function updateRunBtn(){
+  const btn=document.getElementById('run-btn'),n=state.glFiles.length,m=state.bankFiles.length;
+  if(n>0&&m>0){btn.disabled=false;btn.textContent=`⚡ Lancer la réconciliation (${n} GL · ${m} Agicap)`}
+  else if(n>0){btn.disabled=false;btn.textContent=`⚡ Analyser GL seul (${n} fichier${n>1?'s':''})`}
+  else{btn.disabled=true;btn.textContent='⚡ Lancer la réconciliation'}
 }
-
-function removeFile(key, listId, labelId, idx) {
-  state[key].splice(idx, 1);
-  renderFileList(listId, key, labelId);
-  updateRunBtn();
-}
-
-function updateRunBtn() {
-  const btn = document.getElementById('run-btn');
-  const n = state.glFiles.length, m = state.bankFiles.length;
-  btn.disabled = n === 0;
-  if (n > 0 && m > 0) {
-    btn.textContent = `⚡ Lancer la réconciliation (${n} GL · ${m} Agicap)`;
-  } else if (n > 0) {
-    btn.textContent = `⚡ Analyser GL seul (${n} fichier${n>1?'s':''})`;
-    btn.disabled = false;
-  } else {
-    btn.textContent = '⚡ Lancer la réconciliation';
-  }
-}
-
-document.getElementById('fee-slider').oninput = function() {
-  state.feeRate = parseFloat(this.value);
-  document.getElementById('fee-display').textContent = this.value + '%';
-};
-
+document.getElementById('fee-slider').oninput=function(){state.feeRate=parseFloat(this.value);document.getElementById('fee-display').textContent=this.value+'%'};
 setupDrop('gl-drop','gl-input','gl-list','gl-drop-label','glFiles');
 setupDrop('bank-drop','bank-input','bank-list','bank-drop-label','bankFiles');
 
-// ═══════════════════════════════════════════
-// FILE READING
-// ═══════════════════════════════════════════
-function readFile(file) {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = e => {
-      try {
-        const wb = XLSX.read(new Uint8Array(e.target.result), { type: 'array', cellDates: true });
-        resolve({ wb, sheet: wb.Sheets[wb.SheetNames[0]] });
-      } catch(err) { reject(err); }
-    };
-    reader.onerror = reject;
-    reader.readAsArrayBuffer(file);
+function readFile(file){
+  return new Promise((res,rej)=>{
+    const r=new FileReader();
+    r.onload=e=>{try{const wb=XLSX.read(new Uint8Array(e.target.result),{type:'array',cellDates:true});res({wb,sheet:wb.Sheets[wb.SheetNames[0]]})}catch(err){rej(err)}};
+    r.onerror=rej;r.readAsArrayBuffer(file);
   });
 }
+function sheetToRows(sheet,hdr){
+  const raw=XLSX.utils.sheet_to_json(sheet,{header:1,defval:null});
+  if(hdr===undefined){for(let i=0;i<Math.min(10,raw.length);i++){if((raw[i]||[]).filter(x=>x!==null&&x!=='').length>=5){hdr=i;break}}hdr=hdr||0}
+  return XLSX.utils.sheet_to_json(sheet,{defval:null,range:hdr});
+}
 
-function sheetToRows(sheet, headerRowIndex) {
-  const raw = XLSX.utils.sheet_to_json(sheet, { header: 1, defval: null });
-  if (headerRowIndex === undefined) {
-    for (let i = 0; i < Math.min(10, raw.length); i++) {
-      if ((raw[i] || []).filter(x => x !== null && x !== '').length >= 5) {
-        headerRowIndex = i; break;
-      }
-    }
-    headerRowIndex = headerRowIndex || 0;
+const num=v=>parseFloat(v)||0;
+const str=v=>String(v||'').trim();
+const toDate=v=>{if(!v)return null;if(v instanceof Date)return isNaN(v.getTime())?null:v;try{const d=new Date(v);return isNaN(d.getTime())?null:d}catch(e){return null}};
+
+function detectFormat(headers){
+  const h=headers.map(x=>String(x||'').toLowerCase().trim());
+  if(h.includes('numpie')||h.includes('codnatopr')||h.includes('nombai'))return'RMK_FR';
+  if(h.includes('codcli')||h.includes('monecridebi'))return'RMK_FR';
+  if(h.some(c=>c.includes("type d'op")||c.includes('montant ttc')||c.includes('intitulé')||c.includes('intitule')))return'Agicap';
+  return'Unknown';
+}
+
+// ── PARSER RMK FRANCE ──────────────────────────────────────────
+// Logique :
+//  • Une FACTURE = un NUMPIE
+//  • Lignes 411/LFN DEBI = éléments de facturation (loyer, charges, TVA, parking…)
+//  • Lignes 411/LFN CRED = avoirs / corrections
+//  • Total TTC à encaisser = SOMME(DEBI) - SOMME(CRED) sur 411/LFN
+//  • Lignes 706/445/etc = contreparties produit (breakdown HT/TVA)
+//  • LET=O + NUMLET = lettrée = déjà rapprochée en compta
+//  • NOMBAI = nom commercial locataire (pour matching Agicap)
+//  • NUMFACT / NUMFACTLOC = références facture (pour matching Agicap)
+function parseRMK_FR(rows,fname){
+  const byPiece=new Map();
+  for(const r of rows){
+    const p=str(r['NUMPIE']);
+    if(!p||p==='null')continue;
+    if(!byPiece.has(p))byPiece.set(p,[]);
+    byPiece.get(p).push(r);
   }
-  return XLSX.utils.sheet_to_json(sheet, { defval: null, range: headerRowIndex });
-}
-
-// ═══════════════════════════════════════════
-// HELPERS
-// ═══════════════════════════════════════════
-function n(v) { return parseFloat(v) || 0; }
-function s(v) { return String(v || '').trim(); }
-function d(v) {
-  if (!v) return null;
-  if (v instanceof Date) return isNaN(v.getTime()) ? null : v;
-  try { const dt = new Date(v); return isNaN(dt.getTime()) ? null : dt; }
-  catch(e) { return null; }
-}
-
-// ═══════════════════════════════════════════
-// DETECT FORMAT
-// ═══════════════════════════════════════════
-function detectFormat(headers) {
-  const h = headers.map(x => String(x||'').toLowerCase().trim());
-  // France / Altair / RMK format — key distinguishing columns
-  if (h.includes('codnatopr') || h.includes('nombai') || h.includes('codplanctb')) return 'RMK_FR';
-  // Legacy check
-  if (h.includes('codcli') || h.includes('monecridebi')) return 'RMK_FR';
-  // Agicap
-  if (h.some(c => c.includes("type d'op") || c.includes('montant ttc') || c.includes('catégorie') || c.includes('categorie'))) return 'Agicap';
-  return 'Unknown';
-}
-
-// ═══════════════════════════════════════════
-// PARSER RMK FRANCE (Altair)
-// ═══════════════════════════════════════════
-/*
-  Key columns:
-  - CODNATOPR: nature de l'opération
-    · LFN = Locataire Facturation Normale (invoice, DEBI = amount owed by tenant)
-    · LFR = Locataire Facturation Rectificative (credit note, can be CRED)
-    · LEN = Locataire Encaissement Normal (payment received, CRED)
-    · LER = Locataire Encaissement Rectificatif
-    · Q01..Q09 = Quittance (direct rent entries on 706/707 accounts)
-  - CODPLANCTB: 411xxx = client receivable accounts
-  - LET: O = matched/lettered, N = unmatched/open
-  - NUMLET: matching group number (same NUMLET = same reconciliation)
-  - NOMBAI: tenant company name (external name)
-  - NOM: fund name (e.g. "REMAKE LIVE")
-  - LIBIMM: building name
-  - NUMFACT / NUMFACTLOC: invoice reference
-  - MOIREF: billing period
-  - MONECRIDEBI: debit amount (what tenant owes)
-  - MONECRICRED: credit amount (what was received or credited)
-  - DONTTVADEBI / DONTTVACRED: VAT portion of debit/credit
-  - VALTAUTAX: VAT rate (e.g. 20)
-  
-  For reconciliation:
-  - INVOICES = LFN where MONECRIDEBI > 0 (tenant owes us money)
-  - CREDIT NOTES = LFN/LFR where MONECRICRED > 0 (we owe tenant)
-  - PAYMENTS (GL) = LEN where MONECRICRED > 0 (received from tenant)
-  
-  LET=O + NUMLET links invoices to their payments
-*/
-function parseRMK_FR(rows, fname) {
-  const invoices = [];
-  const payments = [];
-
-  for (const r of rows) {
-    const nat = s(r['CODNATOPR']);
-    const plan = s(r['CODPLANCTB']);
-    const debi = n(r['MONECRIDEBI']);
-    const cred = n(r['MONECRICRED']);
-    const let_ = s(r['LET']);
-    const numlet = s(r['NUMLET']);
-
-    const base = {
-      _f: fname,
-      src: 'FR-Altair',
-      imm_code: s(r['CODIMM']),
-      imm_nom: s(r['LIBIMM']),
-      loc_code: s(r['CODCLI']),
-      // NOMBAI = external tenant name (company), NOM = fund/SCPI name
-      loc_nom: s(r['NOMBAI'] || r['NOM'] || r['COMTNOM']),
-      ref: s(r['NUMFACT'] || r['NUMFACTLOC']),
-      desc: s(r['LIBECRI']),
-      elt: s(r['LIBELTFAC'] || r['LIBNATOPR']),
-      plan: plan,
-      nat: nat,
-      debit: debi,
-      credit: cred,
-      // VAT: use DONTTVADEBI/DONTTVACRED if available, else estimate from VALTAUTAX rate
-      tva_d: n(r['DONTTVADEBI']),
-      tva_c: n(r['DONTTVACRED']),
-      vat_rate: n(r['VALTAUTAX']) || 20,
-      date: d(r['DATCTB']),
-      periode: s(r['MOIREF']),
-      lettre: let_,
-      numlet: numlet,
-      devise: 'EUR',
-    };
-
-    // INVOICES: LFN with a debit amount (tenant owes us)
-    if (nat === 'LFN' && debi > 0) {
-      invoices.push({ ...base, type: 'invoice' });
-    }
-    // CREDIT NOTES: LFN/LFR with credit amount (we owe tenant, reduces receivable)
-    else if ((nat === 'LFN' || nat === 'LFR') && cred > 0) {
-      invoices.push({ ...base, type: 'credit_note' });
-    }
-    // PAYMENTS (GL side): LEN with credit (payment received reduces receivable)
-    else if (nat === 'LEN' && cred > 0) {
-      payments.push({ ...base, type: 'payment_gl' });
-    }
-    // Also collect reversals
-    else if (nat === 'LER' && debi > 0) {
-      payments.push({ ...base, type: 'reversal', credit: debi, debit: 0 });
-    }
-  }
-
-  return { invoices, payments };
-}
-
-// ═══════════════════════════════════════════
-// PARSER AGICAP
-// ═══════════════════════════════════════════
-function parseAgicap(rows) {
-  const results = [];
-  for (let i = 0; i < rows.length; i++) {
-    const r = rows[i];
-    // Flexible column name matching
-    const typeOp = s(r["Type d'opération"] || r['type_operation'] || r['Type d operation'] || '');
-    const cat = s(r['Catégorie'] || r['Categorie'] || r['categorie'] || '');
-    const montant = n(r['Montant TTC'] || r['montant_ttc'] || r['Montant'] || r['Amount'] || 0);
-    
-    // Accept any encaissement that looks like rental income
-    const isEncaissement = typeOp.toLowerCase().includes('encaissement') || typeOp === 'Encaissement';
-    const isLocatif = cat.toLowerCase().includes('locatif') || cat.toLowerCase().includes('loyer') || cat === '';
-    
-    if (isEncaissement && montant > 0) {
-      results.push({
-        intitule: s(r['Intitulé'] || r['Intitule'] || r['Libellé'] || r['Libelle'] || r['Description'] || ''),
-        montant: montant,
-        tva: n(r['Montant TVA'] || r['montant_tva'] || 0),
-        date: d(r['Date de règlement'] || r['Date de facturation'] || r['Date'] || null),
-        compte: s(r['Compte bancaire'] || r['compte_bancaire'] || r['Compte'] || ''),
-        devise: s(r['Devise'] || '').includes('GBP') ? 'GBP' : 'EUR',
-        categorie: cat,
-        id: s(r["Identifiant unique de l'opération"] || r['id'] || '') || 'agicap_' + i,
+  const invoices=[];
+  for(const [numpie,lines] of byPiece){
+    // Lignes 411/LFN uniquement
+    const lfn411=lines.filter(r=>str(r['CODNATOPR'])==='LFN'&&str(r['CODPLANCTB']).startsWith('411'));
+    if(!lfn411.length)continue;
+    const debitLines=lfn411.filter(r=>num(r['MONECRIDEBI'])>0);
+    const creditLines=lfn411.filter(r=>num(r['MONECRICRED'])>0);
+    const totalDebi=debitLines.reduce((a,r)=>a+num(r['MONECRIDEBI']),0);
+    const totalCred=creditLines.reduce((a,r)=>a+num(r['MONECRICRED']),0);
+    const netTTC=totalDebi-totalCred;
+    if(Math.abs(netTTC)<0.01)continue;
+    const allLettered=debitLines.length>0&&debitLines.every(r=>str(r['LET'])==='O');
+    const numlet=debitLines.map(r=>str(r['NUMLET'])).find(v=>v&&v!=='null')||'';
+    const ref=lfn411[0];
+    // Breakdown depuis lignes produit (706, 445 TVA, etc.)
+    const elements=[];
+    for(const pl of lines.filter(r=>!str(r['CODPLANCTB']).startsWith('411'))){
+      const cred=num(pl['MONECRICRED']),deb=num(pl['MONECRIDEBI']);
+      const amt=cred-deb;
+      if(Math.abs(amt)<0.01)continue;
+      const plan=str(pl['CODPLANCTB']);
+      elements.push({
+        plan,
+        lib:str(pl['LIBPLANCTB']),
+        desc:str(pl['LIBECRI']).slice(0,55),
+        amount:amt,
+        type:plan.startsWith('445')?'tva':plan.startsWith('706')||plan.startsWith('707')?'loyer':'autre',
+        vat:num(pl['VALTAUTAX']),
       });
     }
+    // HT = somme éléments hors TVA (comptes non 445)
+    const htTotal=elements.filter(e=>e.type!=='tva'&&e.amount>0).reduce((a,e)=>a+e.amount,0);
+    const vatRate=num(ref['VALTAUTAX'])||20;
+    invoices.push({
+      _f:fname,src:'FR-Altair',
+      numpie,
+      numfact:str(ref['NUMFACT']),
+      numfactloc:str(ref['NUMFACTLOC']),
+      codcli:str(ref['CODCLI']),
+      nombai:str(ref['NOMBAI']||ref['NOM']||ref['COMTNOM']),
+      libimm:str(ref['LIBIMM']),
+      codimm:str(ref['CODIMM']),
+      periode:ref['MOIREF'],
+      datctb:ref['DATCTB'],
+      desc:str(ref['LIBECRI']),
+      totalTTC:netTTC,
+      htTotal,
+      vatRate,
+      allLettered,
+      numlet,
+      elements,
+      devise:'EUR',
+      isCredit:netTTC<0,
+    });
+  }
+  return invoices;
+}
+
+// ── PARSER AGICAP ──────────────────────────────────────────────
+function parseAgicap(rows){
+  const results=[];
+  for(let i=0;i<rows.length;i++){
+    const r=rows[i];
+    const typeOp=str(r["Type d'opération"]||r["type d'opération"]||r['Type doperation']||r['type_operation']||'');
+    const montant=num(r['Montant TTC']||r['montant_ttc']||r['Montant']||r['Amount']||0);
+    if(montant<=0)continue;
+    if(typeOp&&!typeOp.toLowerCase().includes('encaissement'))continue;
+    results.push({
+      intitule:str(r['Intitulé']||r['Intitule']||r['Libellé']||r['Libelle']||r['Description']||r['intitule']||''),
+      montant,
+      tva:num(r['Montant TVA']||r['montant_tva']||0),
+      date:toDate(r['Date de règlement']||r['Date de facturation']||r['Date']||null),
+      compte:str(r['Compte bancaire']||r['compte_bancaire']||r['Compte']||''),
+      categorie:str(r['Catégorie']||r['Categorie']||''),
+      devise:str(r['Devise']||'').includes('GBP')?'GBP':'EUR',
+      id:str(r["Identifiant unique de l'opération"]||r['id']||'')||'agicap_'+i,
+    });
   }
   return results;
 }
 
-// ═══════════════════════════════════════════
-// SCORING / MATCHING
-// ═══════════════════════════════════════════
-function norm(str) {
-  return String(str||'').toLowerCase()
-    .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
-    .replace(/[^a-z0-9]/g,'');
-}
+// ── SCORING ────────────────────────────────────────────────────
+// Priorité : réf facture > nom locataire > immeuble > montant TTC
+function norm(s){return String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]/g,'')}
 
-function scoreMatch(bk, inv) {
-  let sc = 0;
-  const bn = norm(bk.intitule);
-  const tn = norm(inv.loc_nom);
-  const ref = norm(inv.ref);
-  const ic = norm(inv.imm_code);
-  const in_ = norm(inv.imm_nom);
-
-  // Reference match (strongest signal)
-  if (ref.length > 3 && bn.includes(ref)) sc += 70;
-  
-  // Building code match
-  if (ic.length > 3 && bn.includes(ic)) sc += 25;
-  
-  // Building name match
-  if (in_.length > 4 && bn.includes(in_.slice(0,8))) sc += 15;
-
-  // Tenant name match
-  if (tn.length > 4) {
-    if (bn.includes(tn.slice(0,10))) sc += 40;
-    else if (bn.includes(tn.slice(0,6))) sc += 25;
-    else if (bn.includes(tn.slice(0,4))) sc += 10;
+function scoreMatch(agicap,inv){
+  let sc=0;
+  const lib=norm(agicap.intitule);
+  // 1. Référence facture (NUMFACT / NUMFACTLOC)
+  const nf=norm(inv.numfact),nfl=norm(inv.numfactloc);
+  if(nf.length>3&&lib.includes(nf))sc+=80;
+  if(nfl.length>4&&lib.includes(nfl))sc+=90;
+  // 2. Nom locataire (NOMBAI)
+  const tn=norm(inv.nombai);
+  if(tn.length>=4){
+    if(lib.includes(tn))sc+=50;
+    else if(lib.includes(tn.slice(0,8)))sc+=30;
+    else if(lib.includes(tn.slice(0,5)))sc+=15;
   }
-
-  // Amount match
-  const expected = inv.debit;
-  if (expected > 0 && bk.montant > 0) {
-    const diff = Math.abs(bk.montant - expected) / expected;
-    if (diff < 0.001) sc += 50;
-    else if (diff < 0.01) sc += 30;
-    else if (diff < 0.03) sc += 15;
-    else if (diff < 0.10) sc += 5;
+  // 3. Immeuble
+  const ic=norm(inv.codimm),in2=norm(inv.libimm);
+  if(ic.length>3&&lib.includes(ic))sc+=20;
+  if(in2.length>4&&lib.includes(in2.slice(0,8)))sc+=12;
+  // 4. Montant TTC
+  const exp=Math.abs(inv.totalTTC);
+  if(exp>0&&agicap.montant>0){
+    const diff=Math.abs(agicap.montant-exp)/exp;
+    if(diff<0.001)sc+=55;
+    else if(diff<0.005)sc+=40;
+    else if(diff<0.02)sc+=25;
+    else if(diff<0.05)sc+=12;
+    else if(diff<0.15)sc+=4;
   }
-
   return sc;
 }
 
-// ═══════════════════════════════════════════
-// RECONCILE
-// ═══════════════════════════════════════════
-function reconcile(invoices, glPayments, agicapPayments) {
-  const results = [];
-  const usedAgicap = new Set();
-  const usedGlPay = new Set();
+// ── RÉCONCILIATION ─────────────────────────────────────────────
+// Pour chaque facture (NUMPIE) on cherche dans Agicap un ou
+// plusieurs virements dont la somme couvre le totalTTC.
+// Règles :
+//  - Score minimum 25 pour considérer un match
+//  - Accumulation greedy jusqu'à 105% du montant attendu
+//  - Si un seul virement > 115% → probablement groupé, on l'utilise seul
+//  - LET=O sans match Agicap → ENCAISSE (payé hors périmètre Agicap)
+function reconcile(invoices,agicapLines){
+  const results=[];
+  const usedAgicap=new Set();
+  const MIN_SCORE=25;
 
-  // Group GL payments by NUMLET (they're already matched in the accounting system)
-  const glPayByNumlet = {};
-  for (const p of glPayments) {
-    if (p.numlet && p.numlet !== 'None' && p.numlet !== '') {
-      if (!glPayByNumlet[p.numlet]) glPayByNumlet[p.numlet] = [];
-      glPayByNumlet[p.numlet].push(p);
-    }
-  }
+  for(const inv of invoices){
+    if(inv.isCredit)continue;
+    const expected=inv.totalTTC;
+    if(expected<=0)continue;
 
-  for (const inv of invoices) {
-    if (inv.type === 'credit_note') continue; // skip credit notes from invoice list
+    const candidates=agicapLines
+      .filter(b=>!usedAgicap.has(b.id)&&b.devise===inv.devise)
+      .map(b=>({b,sc:scoreMatch(b,inv)}))
+      .filter(x=>x.sc>=MIN_SCORE)
+      .sort((a,b)=>b.sc-a.sc);
 
-    const expected = inv.debit;
-    if (expected <= 0) continue;
-
-    // Step 1: Check if already lettered in GL (LET=O means matched in accounting)
-    let glMatched = [];
-    if (inv.lettre === 'O' && inv.numlet) {
-      glMatched = glPayByNumlet[inv.numlet] || [];
-    }
-
-    const glTotal = glMatched.reduce((a, p) => a + p.credit, 0);
-
-    // Step 2: Try to match with Agicap bank data
-    let agicapMatched = [];
-    if (agicapPayments.length > 0) {
-      const scored = agicapPayments
-        .filter(b => !usedAgicap.has(b.id) && b.devise === inv.devise)
-        .map(b => ({ b, sc: scoreMatch(b, inv) }))
-        .filter(x => x.sc >= 30)
-        .sort((a, b) => b.sc - a.sc);
-
-      let cumul = 0;
-      for (const { b, sc } of scored) {
-        if (cumul >= expected * 1.02) break;
-        agicapMatched.push({ b, sc });
-        usedAgicap.add(b.id);
-        cumul += b.montant;
+    let matched=[],cumul=0;
+    if(candidates.length>0){
+      for(const{b,sc}of candidates){
+        if(cumul>=expected*1.05)break;
+        matched.push({b,sc});cumul+=b.montant;
       }
+      // Virement groupé ?
+      if(matched.length>1&&matched[0].b.montant>expected*1.15){
+        matched=[matched[0]];cumul=matched[0].b.montant;
+      }
+      matched.forEach(m=>usedAgicap.add(m.b.id));
     }
 
-    const agicapTotal = agicapMatched.reduce((a, m) => a + m.b.montant, 0);
-
-    // Determine status
-    // Priority: use Agicap data if available, else use GL lettrage
-    let statut, ecart, encTotal;
-    
-    if (agicapMatched.length > 0) {
-      encTotal = agicapTotal;
-      ecart = Math.abs(agicapTotal - expected);
-      const pct = ecart / expected;
-      statut = pct < 0.02 ? 'ENCAISSE' : agicapTotal < expected * 0.98 ? 'PARTIEL' : 'ENCAISSE';
-    } else if (inv.lettre === 'O') {
-      // Lettered in GL = paid, even without Agicap
-      encTotal = glTotal > 0 ? glTotal : expected;
-      ecart = glTotal > 0 ? Math.abs(glTotal - expected) : 0;
-      const pct = ecart / expected;
-      statut = (pct < 0.05 || glTotal === 0) ? 'ENCAISSE' : 'PARTIEL';
+    let statut,ecart,encTotal;
+    if(matched.length>0){
+      encTotal=cumul;
+      const diff=Math.abs(cumul-expected),pct=diff/expected;
+      statut=pct<0.02?'ENCAISSE':cumul<expected*0.98?'PARTIEL':'ENCAISSE';
+      ecart=statut==='ENCAISSE'?0:diff;
+    } else if(inv.allLettered){
+      statut='ENCAISSE';encTotal=expected;ecart=0;
     } else {
-      // LET=N = unpaid
-      encTotal = 0;
-      ecart = expected;
-      statut = 'IMPAYE';
+      statut='IMPAYE';encTotal=0;ecart=expected;
     }
-
-    results.push({
-      gl: inv,
-      bks: agicapMatched.map(m => m.b),
-      glPays: glMatched,
-      statut,
-      ecart: statut === 'ENCAISSE' ? 0 : ecart,
-      sc: agicapMatched[0]?.sc || 0,
-      encTotal,
-    });
+    results.push({inv,bks:matched.map(m=>m.b),statut,ecart,encTotal,topScore:matched[0]?.sc||0});
   }
 
-  // Unmatched Agicap payments
-  agicapPayments.filter(b => !usedAgicap.has(b.id)).forEach(b => {
-    results.push({ gl: null, bks: [b], glPays: [], statut: 'NON_IDENTIFIE', ecart: b.montant, sc: 0, encTotal: b.montant });
-  });
-
+  // Agicap non matchées
+  for(const b of agicapLines){
+    if(!usedAgicap.has(b.id)){
+      results.push({inv:null,bks:[b],statut:'NON_IDENTIFIE',ecart:b.montant,encTotal:b.montant,topScore:0});
+    }
+  }
   return results;
 }
 
-// ═══════════════════════════════════════════
-// RUN
-// ═══════════════════════════════════════════
-async function runReconciliation() {
-  const btn = document.getElementById('run-btn');
-  btn.disabled = true;
-  btn.textContent = '⏳ Analyse en cours…';
+// ── RUN ────────────────────────────────────────────────────────
+async function runReconciliation(){
+  const btn=document.getElementById('run-btn');
+  btn.disabled=true;btn.textContent='⏳ Analyse en cours…';
+  const log=[];let allInvoices=[],allAgicap=[];
 
-  const log = [];
-  let allInvoices = [], allGlPay = [], allAgicap = [];
-
-  // Parse GL files
-  for (const f of state.glFiles) {
-    try {
-      const { sheet } = await readFile(f);
-      const rows = sheetToRows(sheet);
-      const headers = Object.keys(rows[0] || {});
-      const fmt = detectFormat(headers);
-
-      if (fmt === 'RMK_FR') {
-        const { invoices, payments } = parseRMK_FR(rows, f.name);
+  for(const f of state.glFiles){
+    try{
+      const{sheet}=await readFile(f);
+      const rows=sheetToRows(sheet);
+      const fmt=detectFormat(Object.keys(rows[0]||{}));
+      if(fmt==='RMK_FR'){
+        const invoices=parseRMK_FR(rows,f.name);
         allInvoices.push(...invoices);
-        allGlPay.push(...payments);
-        log.push({ file: f.name, fmt: 'FR-Altair', lines: invoices.length, pays: payments.length, ok: true });
-      } else if (fmt === 'Agicap') {
-        // User uploaded Agicap in wrong field, handle gracefully
-        const parsed = parseAgicap(rows);
-        allAgicap.push(...parsed);
-        log.push({ file: f.name, fmt: 'Agicap (détecté auto)', lines: parsed.length, ok: true });
-      } else {
-        log.push({ file: f.name, fmt: 'Format inconnu', lines: 0, ok: false, err: `Colonnes non reconnues. Attendu: CODNATOPR, NOMBAI, CODPLANCTB` });
+        log.push({file:f.name,fmt:'FR-Altair',lines:invoices.length,ok:true});
+      }else if(fmt==='Agicap'){
+        const parsed=parseAgicap(rows);allAgicap.push(...parsed);
+        log.push({file:f.name,fmt:'Agicap (auto)',lines:parsed.length,ok:true});
+      }else{
+        log.push({file:f.name,fmt:'Inconnu',lines:0,ok:false,err:'Colonnes non reconnues — attendu: NUMPIE, CODNATOPR, NOMBAI'});
       }
-    } catch(err) {
-      log.push({ file: f.name, fmt: '?', lines: 0, ok: false, err: String(err) });
-    }
+    }catch(err){log.push({file:f.name,fmt:'?',lines:0,ok:false,err:String(err).slice(0,80)})}
+  }
+  for(const f of state.bankFiles){
+    try{
+      const{sheet}=await readFile(f);
+      let rows=sheetToRows(sheet,3);
+      if(Object.keys(rows[0]||{}).length<3)rows=sheetToRows(sheet,0);
+      const parsed=parseAgicap(rows);allAgicap.push(...parsed);
+      log.push({file:f.name,fmt:'Agicap',lines:parsed.length,ok:true});
+    }catch(err){log.push({file:f.name,fmt:'Agicap',lines:0,ok:false,err:String(err).slice(0,80)})}
   }
 
-  // Parse Agicap files
-  for (const f of state.bankFiles) {
-    try {
-      const { sheet } = await readFile(f);
-      // Try row 3 (Agicap standard), then row 0
-      let rows = sheetToRows(sheet, 3);
-      let headers = Object.keys(rows[0] || {});
-      if (!detectFormat(headers).includes('Agicap') && rows.length === 0) {
-        rows = sheetToRows(sheet, 0);
-      }
-      const parsed = parseAgicap(rows);
-      allAgicap.push(...parsed);
-      log.push({ file: f.name, fmt: 'Agicap', lines: parsed.length, ok: true });
-    } catch(err) {
-      log.push({ file: f.name, fmt: 'Agicap', lines: 0, ok: false, err: String(err) });
-    }
-  }
-
-  state.results = reconcile(allInvoices, allGlPay, allAgicap);
-  state.log = log;
-
-  showResults();
-  btn.disabled = false;
-  updateRunBtn();
+  state.results=reconcile(allInvoices,allAgicap);
+  state.log=log;showResults();
+  btn.disabled=false;updateRunBtn();
 }
 
-// ═══════════════════════════════════════════
-// RESULTS UI
-// ═══════════════════════════════════════════
-const SC_CFG = {
-  ENCAISSE:      { label: 'Encaissé',      color: '#12C97A', bg: '#12C97A18' },
-  PARTIEL:       { label: 'Partiel',       color: '#F2A60D', bg: '#F2A60D18' },
-  IMPAYE:        { label: 'Impayé',        color: '#F04747', bg: '#F0474718' },
-  NON_IDENTIFIE: { label: 'Non identifié', color: '#8B5CF6', bg: '#8B5CF618' },
-};
+// ── UI ─────────────────────────────────────────────────────────
+const SC={ENCAISSE:{label:'Encaissé',color:'#12C97A',bg:'#12C97A18'},PARTIEL:{label:'Partiel',color:'#F2A60D',bg:'#F2A60D18'},IMPAYE:{label:'Impayé',color:'#F04747',bg:'#F0474718'},NON_IDENTIFIE:{label:'Non identifié',color:'#8B5CF6',bg:'#8B5CF618'}};
+const badge=st=>{const c=SC[st]||SC.IMPAYE,ic={ENCAISSE:'✓',PARTIEL:'◑',IMPAYE:'✕',NON_IDENTIFIE:'?'};return`<span class="badge" style="background:${c.bg};color:${c.color}">${ic[st]||'?'} ${c.label}</span>`};
+const money=v=>new Intl.NumberFormat('fr-FR',{minimumFractionDigits:2,maximumFractionDigits:2}).format(v||0);
+const moneyK=v=>{const a=Math.abs(v);if(a>=1e6)return(v/1e6).toFixed(1)+'M €';if(a>=1000)return(v/1000).toFixed(0)+'k €';return money(v)+' €'};
+const dt=v=>{if(!v)return'—';try{return new Date(v).toLocaleDateString('fr-FR')}catch(e){return'—'}};
+const per=v=>{if(!v)return'—';try{const d=v instanceof Date?v:new Date(v);return d.toLocaleDateString('fr-FR',{month:'short',year:'numeric'})}catch(e){return String(v).slice(0,7)}};
 
-function badge(s) {
-  const c = SC_CFG[s] || SC_CFG.IMPAYE;
-  const icons = { ENCAISSE: '✓', PARTIEL: '◑', IMPAYE: '✕', NON_IDENTIFIE: '?' };
-  return `<span class="badge" style="background:${c.bg};color:${c.color}">${icons[s]||'?'} ${c.label}</span>`;
-}
-
-function money(n) {
-  return new Intl.NumberFormat('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(n || 0);
-}
-function moneyK(n) {
-  if (Math.abs(n) >= 1000000) return (n/1000000).toFixed(1) + 'M €';
-  if (Math.abs(n) >= 1000) return (n/1000).toFixed(0) + 'k €';
-  return money(n) + ' €';
-}
-function dt(d) {
-  if (!d) return '—';
-  try { return new Date(d).toLocaleDateString('fr-FR'); } catch(e) { return '—'; }
-}
-function per(d) {
-  if (!d) return '—';
-  try {
-    const dt = d instanceof Date ? d : new Date(d);
-    return dt.toLocaleDateString('fr-FR', { month: 'short', year: 'numeric' });
-  } catch(e) { return String(d).slice(0, 7); }
+function calcStats(results){
+  const by=st=>results.filter(r=>r.statut===st);
+  const enc=by('ENCAISSE'),part=by('PARTIEL'),imp=by('IMPAYE'),ni=by('NON_IDENTIFIE');
+  const totalAtt=results.filter(r=>r.inv).reduce((a,r)=>a+r.inv.totalTTC,0);
+  const totalEnc=[...enc,...part].reduce((a,r)=>a+(r.encTotal||0),0);
+  const htEnc=enc.filter(r=>r.bks.length>0).reduce((a,r)=>a+(r.inv?.htTotal||0),0);
+  const taux=totalAtt>0?(totalEnc/totalAtt*100).toFixed(1):0;
+  return{enc:enc.length,part:part.length,imp:imp.length,ni:ni.length,totalAtt,totalEnc,fees:htEnc*state.feeRate/100,taux};
 }
 
-function calcStats(results) {
-  const by = s => results.filter(r => r.statut === s);
-  const sumEnc = arr => arr.reduce((a, r) => a + (r.encTotal || 0), 0);
-  const sumAtt = arr => arr.reduce((a, r) => a + (r.gl ? r.gl.debit : 0), 0);
-  const enc = by('ENCAISSE'), part = by('PARTIEL'), imp = by('IMPAYE'), ni = by('NON_IDENTIFIE');
-  const withGL = results.filter(r => r.gl);
-  const totalAtt = sumAtt(withGL);
-  const totalEnc = sumEnc([...enc, ...part]);
-  const htEnc = enc.reduce((a, r) => {
-    const ttc = r.encTotal || 0;
-    const vr = r.gl?.vat_rate || 20;
-    return a + ttc / (1 + vr/100);
-  }, 0);
-  const taux = totalAtt > 0 ? (totalEnc / totalAtt * 100).toFixed(1) : 0;
-  return { enc: enc.length, part: part.length, imp: imp.length, ni: ni.length, totalAtt, totalEnc, fees: htEnc * state.feeRate / 100, taux };
-}
-
-function showResults() {
+function showResults(){
   document.getElementById('page-upload').classList.remove('active');
   document.getElementById('page-results').classList.add('active');
-
-  document.getElementById('nav-actions').innerHTML = `
-    <button class="btn btn-export" onclick="exportExcel()">⬇ Export Excel</button>
-    <button class="btn btn-ghost" onclick="goUpload()">← Nouveau</button>
-  `;
-
-  renderKPIs();
-  renderTable();
-  renderResultLog();
+  document.getElementById('nav-actions').innerHTML=`<button class="btn btn-export" onclick="exportExcel()">⬇ Export Excel</button><button class="btn btn-ghost" onclick="goUpload()">← Nouveau</button>`;
+  const imms=[...new Set(state.results.map(r=>r.inv?.libimm).filter(Boolean))].sort();
+  const sel=document.getElementById('imm-select');sel.innerHTML='<option value="ALL">Tous immeubles</option>';
+  imms.forEach(im=>{const o=document.createElement('option');o.value=im;o.textContent=im;sel.appendChild(o)});
+  renderKPIs();renderTable();renderResultLog();
 }
 
-function renderKPIs() {
-  const stats = calcStats(state.results);
-  const kpis = [
-    { s: 'ALL', label: 'Total', val: state.results.length, color: '#6B7A8D' },
-    { s: 'ENCAISSE', label: 'Encaissés', val: stats.enc, color: '#12C97A' },
-    { s: 'PARTIEL', label: 'Partiels', val: stats.part, color: '#F2A60D' },
-    { s: 'IMPAYE', label: 'Impayés', val: stats.imp, color: '#F04747' },
-    { s: 'NON_IDENTIFIE', label: 'Non ID', val: stats.ni, color: '#8B5CF6' },
+function renderKPIs(){
+  const stats=calcStats(state.results);
+  const kpis=[
+    {s:'ALL',label:'Total',val:state.results.length,color:'#6B7A8D'},
+    {s:'ENCAISSE',label:'Encaissés',val:stats.enc,color:'#12C97A'},
+    {s:'PARTIEL',label:'Partiels',val:stats.part,color:'#F2A60D'},
+    {s:'IMPAYE',label:'Impayés',val:stats.imp,color:'#F04747'},
+    {s:'NON_IDENTIFIE',label:'Non ID',val:stats.ni,color:'#8B5CF6'},
     null,
-    { s: null, label: 'Attendu', val: moneyK(stats.totalAtt), color: '#6B7A8D', noclick: true },
-    { s: null, label: 'Encaissé', val: moneyK(stats.totalEnc), color: parseFloat(stats.taux) >= 95 ? '#12C97A' : '#F2A60D', sub: stats.taux + '%', noclick: true },
-    { s: null, label: `Fees ${state.feeRate}%`, val: moneyK(stats.fees), color: '#1A6EFF', noclick: true },
+    {s:null,label:'Attendu',val:moneyK(stats.totalAtt),color:'#6B7A8D',noclick:true},
+    {s:null,label:'Encaissé',val:moneyK(stats.totalEnc),color:parseFloat(stats.taux)>=95?'#12C97A':'#F2A60D',sub:stats.taux+'%',noclick:true},
+    {s:null,label:`Fees ${state.feeRate}%`,val:moneyK(stats.fees),color:'#1A6EFF',noclick:true},
   ];
-
-  const row = document.getElementById('kpi-row');
-  row.innerHTML = '';
-  kpis.forEach(k => {
-    if (!k) { const sp = document.createElement('div'); sp.style.flex='1'; row.appendChild(sp); return; }
-    const div = document.createElement('div');
-    div.className = 'kpi' + (k.noclick ? ' no-click' : '') + (state.filterStatut === k.s ? ' active' : '');
-    div.style.setProperty('--kc', k.color);
-    div.innerHTML = `<div class="kl">${k.label}</div><div class="kv">${k.val}</div>${k.sub ? `<div class="ks">${k.sub}</div>` : ''}`;
-    if (!k.noclick) div.onclick = () => { state.filterStatut = state.filterStatut === k.s ? 'ALL' : k.s; renderKPIs(); renderTable(); };
+  const row=document.getElementById('kpi-row');row.innerHTML='';
+  kpis.forEach(k=>{
+    if(!k){const sp=document.createElement('div');sp.style.flex='1';row.appendChild(sp);return}
+    const div=document.createElement('div');
+    div.className='kpi'+(k.noclick?' no-click':'')+(state.filterStatut===k.s?' active':'');
+    div.style.setProperty('--kc',k.color);
+    div.innerHTML=`<div class="kl">${k.label}</div><div class="kv">${k.val}</div>${k.sub?`<div class="ks">${k.sub}</div>`:''}`;
+    if(!k.noclick)div.onclick=()=>{state.filterStatut=state.filterStatut===k.s?'ALL':k.s;renderKPIs();renderTable()};
     row.appendChild(div);
   });
 }
 
-function getFiltered() {
-  const search = document.getElementById('search-input').value.toLowerCase();
-  const src = document.getElementById('source-select').value;
-  return state.results.filter(r => {
-    if (state.filterStatut !== 'ALL' && r.statut !== state.filterStatut) return false;
-    if (src !== 'ALL' && r.statut !== src) return false;
-    if (search) {
-      const hay = [
-        r.gl?.loc_nom, r.gl?.imm_nom, r.gl?.ref, r.gl?._f,
-        r.gl?.desc, r.gl?.elt, r.gl?.loc_code,
-        ...r.bks.map(b => b.intitule)
-      ].join(' ').toLowerCase();
-      if (!hay.includes(search)) return false;
+function getFiltered(){
+  const search=document.getElementById('search-input').value.toLowerCase();
+  const statut=document.getElementById('statut-select').value;
+  const imm=document.getElementById('imm-select').value;
+  return state.results.filter(r=>{
+    if(state.filterStatut!=='ALL'&&r.statut!==state.filterStatut)return false;
+    if(statut!=='ALL'&&r.statut!==statut)return false;
+    if(imm!=='ALL'&&r.inv?.libimm!==imm)return false;
+    if(search){
+      const hay=[r.inv?.nombai,r.inv?.libimm,r.inv?.numfact,r.inv?.numfactloc,r.inv?.desc,r.inv?.codcli,r.inv?.numpie,...r.bks.map(b=>b.intitule)].join(' ').toLowerCase();
+      if(!hay.includes(search))return false;
     }
     return true;
   });
 }
 
-function renderTable() {
-  const filtered = getFiltered();
-  document.getElementById('count-label').textContent = filtered.length + ' ligne' + (filtered.length !== 1 ? 's' : '');
+function renderTable(){
+  const filtered=getFiltered();
+  document.getElementById('count-label').textContent=filtered.length+' ligne'+(filtered.length!==1?'s':'');
+  const fr=state.feeRate;
+  const cols=['Statut','Immeuble','Locataire','Réf. Facture','Période','Élts','Attendu TTC','Encaissé TTC','Écart','HT',`Fees ${fr}%`,'Lettr.','Libellé Agicap','Date'];
+  const rights=new Set(['Élts','Attendu TTC','Encaissé TTC','Écart','HT',`Fees ${fr}%`]);
+  document.getElementById('table-head').innerHTML=`<tr>${cols.map(c=>`<th class="${rights.has(c)?'r':''}">${c}</th>`).join('')}</tr>`;
 
-  const fr = state.feeRate;
-  const cols = ['Statut','Immeuble','Locataire','Réf. Facture','Période','Attendu TTC','Encaissé TTC','Écart','Loyer HT',`Fees ${fr}%`,'Lettrage','Libellé Agicap','Date'];
-  const rights = new Set(['Attendu TTC','Encaissé TTC','Écart','Loyer HT',`Fees ${fr}%`]);
-
-  document.getElementById('table-head').innerHTML = `<tr>${cols.map(c => `<th class="${rights.has(c)?'r':''}">${c}</th>`).join('')}</tr>`;
-
-  const max = 300;
-  const rows = filtered.slice(0, max);
-  const tbody = document.getElementById('table-body');
-  tbody.innerHTML = '';
-
-  rows.forEach(row => {
-    const inv = row.gl;
-    const bks = row.bks || [];
-    const att = inv ? inv.debit : 0;
-    const enc = row.encTotal || 0;
-    const vr = inv?.vat_rate || 20;
-    const ht = enc > 0 ? enc / (1 + vr/100) : 0;
-    const fees = ht * fr / 100;
-
-    const tr = document.createElement('tr');
-    if (state.selectedRow === row) tr.classList.add('selected');
-    tr.onclick = () => { state.selectedRow = state.selectedRow === row ? null : row; renderTable(); renderDetail(); };
-
-    const encColor = enc > 0 ? '#12C97A' : '#2E3A4A';
-    const ecartColor = row.ecart > 0 ? '#F04747' : '#2E3A4A';
-    const letColor = inv?.lettre === 'O' ? '#12C97A' : '#F04747';
-
-    // Period formatting
-    const periodeStr = per(inv?.periode);
-
-    tr.innerHTML = `
+  const tbody=document.getElementById('table-body');tbody.innerHTML='';
+  const max=400;
+  filtered.slice(0,max).forEach(row=>{
+    const inv=row.inv,bks=row.bks||[];
+    const att=inv?inv.totalTTC:0;
+    const enc=row.encTotal||0;
+    const ht=inv?(inv.htTotal>0?inv.htTotal:enc/(1+inv.vatRate/100)):0;
+    const fees=ht*fr/100;
+    const tr=document.createElement('tr');
+    if(state.selectedRow===row)tr.classList.add('selected');
+    tr.onclick=()=>{state.selectedRow=state.selectedRow===row?null:row;renderTable();renderDetail()};
+    tr.innerHTML=`
       <td>${badge(row.statut)}</td>
-      <td style="color:#6B7A8D;max-width:120px">${inv?.imm_nom || '—'}</td>
-      <td style="color:#DCE8F4;font-weight:700;max-width:160px">${inv?.loc_nom || bks[0]?.intitule?.slice(0,30) || '—'}</td>
-      <td class="mono" style="color:#6B7A8D;max-width:130px">${inv?.ref?.slice(0,18) || '—'}</td>
-      <td class="mono" style="color:#4A5A6A;font-size:10px">${periodeStr}</td>
-      <td class="r" style="color:#4A5A6A">${att > 0 ? money(att) : '—'}</td>
-      <td class="r" style="color:${encColor};font-weight:${enc>0?'700':'400'}">${enc > 0 ? money(enc) : '—'}</td>
-      <td class="r" style="color:${ecartColor};font-size:10px">${row.ecart > 0 ? money(row.ecart) : '—'}</td>
-      <td class="r" style="color:#8B5CF6">${ht > 0 ? money(ht) : '—'}</td>
-      <td class="r" style="color:#1A6EFF;font-weight:700">${fees > 0 ? money(fees) : '—'}</td>
-      <td class="mono" style="color:${letColor};font-size:10px">${inv?.lettre || '—'} ${inv?.numlet ? '#'+inv.numlet : ''}</td>
-      <td style="color:#4A5A6A;max-width:180px;font-size:10px">${bks.map(b => b.intitule).join(' | ').slice(0,55) || '—'}</td>
-      <td class="mono" style="color:#2E3A4A;font-size:10px">${dt(bks[0]?.date) !== '—' ? dt(bks[0]?.date) : (inv?.date ? dt(inv.date) : '—')}</td>
-    `;
+      <td style="color:#6B7A8D;max-width:110px">${inv?.libimm||'—'}</td>
+      <td style="color:var(--white);font-weight:700;max-width:160px">${inv?.nombai||bks[0]?.intitule?.slice(0,28)||'—'}</td>
+      <td class="mono" style="color:#6B7A8D;max-width:130px">${inv?.numfact||'—'}</td>
+      <td class="mono" style="color:#4A5A6A;font-size:10px">${per(inv?.periode)}</td>
+      <td class="r" style="color:#4A5A6A;font-size:10px">${inv?inv.elements.length:'—'}</td>
+      <td class="r" style="color:#4A5A6A">${att>0?money(att):'—'}</td>
+      <td class="r" style="color:${enc>0?'#12C97A':'#2E3A4A'};font-weight:${enc>0?700:400}">${enc>0?money(enc):'—'}</td>
+      <td class="r" style="color:${row.ecart>0?'#F04747':'#2E3A4A'};font-size:10px">${row.ecart>0?money(row.ecart):'—'}</td>
+      <td class="r" style="color:#8B5CF6">${ht>0?money(ht):'—'}</td>
+      <td class="r" style="color:#1A6EFF;font-weight:700">${fees>0?money(fees):'—'}</td>
+      <td class="mono" style="color:${inv?.allLettered?'#12C97A':'#2E3A4A'};font-size:10px">${inv?.allLettered?'O':'N'}${inv?.numlet?' #'+inv.numlet:''}</td>
+      <td style="color:#4A5A6A;max-width:180px;font-size:10px">${bks.map(b=>b.intitule).join(' | ').slice(0,55)||'—'}</td>
+      <td class="mono" style="color:#2E3A4A;font-size:10px">${bks[0]?.date?dt(bks[0].date):(inv?.datctb?dt(inv.datctb):'—')}</td>`;
     tbody.appendChild(tr);
   });
-
-  const moreRow = document.getElementById('more-row');
-  const emptyRow = document.getElementById('empty-row');
-  moreRow.style.display = filtered.length > max ? 'block' : 'none';
-  emptyRow.style.display = filtered.length === 0 ? 'block' : 'none';
-  if (filtered.length > max) moreRow.textContent = `+ ${filtered.length - max} lignes supplémentaires — exportez Excel pour tout voir`;
+  document.getElementById('more-row').style.display=filtered.length>max?'block':'none';
+  document.getElementById('empty-row').style.display=filtered.length===0?'block':'none';
+  if(filtered.length>max)document.getElementById('more-row').textContent=`+ ${filtered.length-max} lignes — exportez Excel pour tout voir`;
 }
 
-function renderDetail() {
-  const panel = document.getElementById('detail-panel');
-  const content = document.getElementById('detail-content');
-  const row = state.selectedRow;
-  if (!row) { panel.classList.remove('open'); return; }
+function renderDetail(){
+  const panel=document.getElementById('detail-panel'),content=document.getElementById('detail-content');
+  const row=state.selectedRow;
+  if(!row){panel.classList.remove('open');return}
   panel.classList.add('open');
+  const inv=row.inv,bks=row.bks||[],fr=state.feeRate;
+  let html=badge(row.statut);
 
-  const inv = row.gl;
-  const bks = row.bks || [];
-  const glPays = row.glPays || [];
-  const fr = state.feeRate;
-
-  let html = badge(row.statut);
-
-  if (inv) {
-    html += dpSection('Facture locataire', [
-      ['Locataire', inv.loc_nom],
-      ['Code client', inv.loc_code],
-      ['Immeuble', inv.imm_nom],
-      ['Code immeuble', inv.imm_code],
-      ['Réf. facture', inv.ref],
-      ['Description', (inv.desc||'').slice(0, 60)],
-      ['Nature opération', inv.elt],
-      ['Période', per(inv.periode)],
-      ['Date comptable', dt(inv.date)],
-      ['Montant TTC', money(inv.debit) + ' €'],
-      ['Taux TVA', (inv.vat_rate || 20) + ' %'],
-      ['Lettrage', inv.lettre + (inv.numlet ? ' #' + inv.numlet : '')],
-      ['Fichier', inv._f],
+  if(inv){
+    html+=`<div class="dp-sec">Facture locataire</div>`+dpRows([
+      ['Locataire',inv.nombai],['Code client',inv.codcli],
+      ['Immeuble',inv.libimm+(inv.codimm?' ('+inv.codimm+')':'')],
+      ['Réf. facture',inv.numfact],['Réf. locale',inv.numfactloc],
+      ['NUMPIE',inv.numpie],['Période',per(inv.periode)],
+      ['Date comptable',dt(inv.datctb)],
+      ['Total TTC',money(inv.totalTTC)+' €'],
+      ['Total HT',money(inv.htTotal)+' €'],
+      ['TVA',inv.vatRate+' %'],['Fichier',inv._f],
     ]);
+
+    if(inv.elements.length>0){
+      const loyers=inv.elements.filter(e=>e.type==='loyer');
+      const tvas=inv.elements.filter(e=>e.type==='tva');
+      const autres=inv.elements.filter(e=>e.type==='autre');
+      html+=`<div class="dp-sec">Éléments de facturation (${inv.elements.length})</div><div class="elt-list">`;
+      loyers.forEach(e=>html+=`<div class="elt-item"><span class="elt-lib" title="${e.desc}">${e.lib||e.desc}</span><span class="elt-amt" style="color:#12C97A">${money(e.amount)} €</span></div>`);
+      autres.forEach(e=>html+=`<div class="elt-item"><span class="elt-lib" title="${e.desc}">${e.lib||e.desc}</span><span class="elt-amt" style="color:#8B5CF6">${money(e.amount)} €</span></div>`);
+      if(tvas.length>0){const tot=tvas.reduce((a,e)=>a+e.amount,0);html+=`<div class="elt-item"><span class="elt-lib">TVA ${inv.vatRate}% (${tvas.length} ligne${tvas.length>1?'s':''})</span><span class="elt-amt" style="color:#F2A60D">${money(tot)} €</span></div>`}
+      html+=`</div>`;
+    }
   }
 
-  if (glPays.length > 0) {
-    const glTotal = glPays.reduce((a, p) => a + p.credit, 0);
-    html += dpSection('Encaissements GL (lettrage)', [
-      ['Nb mouvements', glPays.length],
-      ['Total encaissé', money(glTotal) + ' €'],
-      ...glPays.slice(0, 3).map((p, i) => [`Mouv. ${i+1}`, money(p.credit) + ' €  ' + dt(p.date)]),
-    ]);
-  }
-
-  if (bks.length > 0) {
-    bks.forEach((bk, i) => {
-      html += dpSection('Agicap' + (bks.length > 1 ? ` #${i+1}` : ''), [
-        ['Montant', money(bk.montant) + ' €'],
-        ['Date', dt(bk.date)],
-        ['Intitulé', (bk.intitule||'').slice(0, 65)],
-        ['Compte', bk.compte],
-        ['Score match', row.sc || 0],
+  if(bks.length>0){
+    html+=`<div class="dp-sec">Encaissement${bks.length>1?'s':''} Agicap (${bks.length})</div>`;
+    bks.forEach((b,i)=>{
+      html+=dpRows([
+        [`#${i+1} Montant`,money(b.montant)+' €'],
+        ['Date',dt(b.date)],['Intitulé',b.intitule.slice(0,70)],
+        ['Compte',b.compte],['Catégorie',b.categorie||'—'],
       ]);
+      const sc=row.topScore||0,pct=Math.min(sc,100);
+      const bc=sc>=80?'#12C97A':sc>=50?'#F2A60D':'#F04747';
+      html+=`<div style="margin:4px 0 10px"><div style="font-size:9px;color:var(--text3);font-family:'IBM Plex Mono',monospace;margin-bottom:2px">Score match: ${sc}</div><div class="match-bar"><div class="match-fill" style="width:${pct}%;background:${bc}"></div></div></div>`;
     });
   }
 
-  if (row.encTotal > 0) {
-    const ttc = row.encTotal;
-    const vr = inv?.vat_rate || 20;
-    const ht = ttc / (1 + vr/100);
-    const tva = ttc - ht;
-    const fees = ht * fr / 100;
-    html += `
-      <div class="fee-box">
-        <div class="fee-box-title">Calcul frais de gestion</div>
-        <div class="fee-row"><span>TTC encaissé</span><span style="color:#6B7A8D">${money(ttc)} €</span></div>
-        <div class="fee-row"><span>TVA (${vr}%)</span><span style="color:#6B7A8D">${money(tva)} €</span></div>
-        <div class="fee-total">
-          <span class="fee-ht">Loyer HT</span><span class="fee-ht">${money(ht)} €</span>
-        </div>
-        <div class="fee-total" style="margin-top:5px">
-          <span class="fee-fees">Fees (${fr}%)</span><span class="fee-fees">${money(fees)} €</span>
-        </div>
-      </div>`;
+  if(row.encTotal>0&&inv){
+    const ttc=row.encTotal,ht=inv.htTotal>0?inv.htTotal:ttc/(1+inv.vatRate/100),tva=ttc-ht,fees=ht*fr/100;
+    html+=`<div class="fee-box"><div class="fee-box-title">Calcul frais de gestion</div>
+      <div class="fr"><span>TTC encaissé</span><span style="color:var(--text2)">${money(ttc)} €</span></div>
+      <div class="fr"><span>TVA (${inv.vatRate}%)</span><span style="color:var(--text2)">${money(tva)} €</span></div>
+      <div class="ft"><span style="color:var(--purple);font-weight:700;font-family:'IBM Plex Mono',monospace">HT</span><span style="color:var(--purple);font-weight:700;font-family:'IBM Plex Mono',monospace">${money(ht)} €</span></div>
+      <div class="ft" style="margin-top:5px"><span style="color:var(--accent);font-weight:800;font-family:'IBM Plex Mono',monospace">Fees (${fr}%)</span><span style="color:var(--accent);font-weight:800;font-family:'IBM Plex Mono',monospace">${money(fees)} €</span></div>
+    </div>`;
   }
-
-  content.innerHTML = html;
+  content.innerHTML=html;
 }
 
-function dpSection(title, rows) {
-  return `<div class="dp-section-title">${title}</div>` +
-    rows.map(([k, v]) => `<div class="dp-row"><span class="dp-key">${k}</span><span class="dp-val">${v || '—'}</span></div>`).join('');
-}
+function dpRows(pairs){return pairs.map(([k,v])=>`<div class="dp-row"><span class="dp-key">${k}</span><span class="dp-val">${v||'—'}</span></div>`).join('')}
+function closeDetail(){state.selectedRow=null;renderTable();renderDetail()}
 
-function closeDetail() { state.selectedRow = null; renderTable(); renderDetail(); }
-
-function renderResultLog() {
-  const el = document.getElementById('result-log');
-  el.innerHTML = state.log.map(l => {
-    let info = `${l.ok ? '✓' : '✕'} ${l.file} · ${l.fmt}`;
-    if (l.lines !== undefined) info += ` · ${l.lines} factures`;
-    if (l.pays !== undefined) info += ` · ${l.pays} paiements`;
-    if (l.err) info += ` — ${l.err.slice(0,60)}`;
-    return `<span class="log-chip" style="color:${l.ok?'#12C97A':'#F04747'}">${info}</span>`;
+function renderResultLog(){
+  document.getElementById('result-log').innerHTML=state.log.map(l=>{
+    let info=`${l.ok?'✓':'✕'} ${l.file} · ${l.fmt}`;
+    if(l.lines!==undefined)info+=` · ${l.lines} factures`;
+    if(l.err)info+=` — ${l.err}`;
+    return`<span class="log-chip" style="color:${l.ok?'#12C97A':'#F04747'}">${info}</span>`;
   }).join('');
 }
 
-function goUpload() {
+function goUpload(){
   document.getElementById('page-results').classList.remove('active');
   document.getElementById('page-upload').classList.add('active');
-  document.getElementById('nav-actions').innerHTML = '';
-  state.results = []; state.selectedRow = null;
+  document.getElementById('nav-actions').innerHTML='';
+  state.results=[];state.selectedRow=null;
 }
 
-// ═══════════════════════════════════════════
-// EXPORT EXCEL
-// ═══════════════════════════════════════════
-function exportExcel() {
-  const fr = state.feeRate;
-  const rows = state.results.map(r => {
-    const inv = r.gl, bks = r.bks || [];
-    const att = inv ? inv.debit : 0;
-    const enc = r.encTotal || 0;
-    const vr = inv?.vat_rate || 20;
-    const ht = enc > 0 ? enc / (1 + vr/100) : 0;
-    return {
-      'Statut': r.statut,
-      'Fichier': inv?._f || '—',
-      'Code Immeuble': inv?.imm_code || '—',
-      'Immeuble': inv?.imm_nom || '—',
-      'Code Locataire': inv?.loc_code || '—',
-      'Locataire': inv?.loc_nom || bks[0]?.intitule?.slice(0,40) || '—',
-      'Réf. Facture': inv?.ref || '—',
-      'Description': inv?.desc || '—',
-      'Nature Opération': inv?.elt || '—',
-      'Période': inv?.periode ? per(inv.periode) : '—',
-      'Date Comptable': inv?.date ? dt(inv.date) : '—',
-      'Devise': inv?.devise || 'EUR',
-      'Attendu TTC': att > 0 ? +att.toFixed(2) : '',
-      'Encaissé TTC': enc > 0 ? +enc.toFixed(2) : '',
-      'Écart': r.ecart > 0 ? +r.ecart.toFixed(2) : 0,
-      'Taux TVA %': vr,
-      'Loyer HT': ht > 0 ? +ht.toFixed(2) : '',
-      [`Fees ${fr}%`]: ht > 0 ? +(ht * fr / 100).toFixed(2) : '',
-      'Lettrage GL': inv?.lettre || '—',
-      'Num. Lettrage': inv?.numlet || '—',
-      'Compte Banque': bks[0]?.compte || '—',
-      'Libellé Agicap': bks.map(b => b.intitule).join(' | ').slice(0,120) || '—',
-      'Date Encaissement': dt(bks[0]?.date),
-      'Nb Virements Agicap': bks.length || 0,
-      'Score Match': r.sc || 0,
+// ── EXPORT ─────────────────────────────────────────────────────
+function exportExcel(){
+  const fr=state.feeRate;
+  const mainRows=state.results.filter(r=>r.inv).map(r=>{
+    const inv=r.inv,bks=r.bks||[];
+    const ht=inv.htTotal>0?inv.htTotal:(r.encTotal/(1+inv.vatRate/100)||0);
+    const loyers=inv.elements.filter(e=>e.type==='loyer').map(e=>`${e.lib}: ${money(e.amount)}€`).join(' | ');
+    const tvaTotal=inv.elements.filter(e=>e.type==='tva').reduce((a,e)=>a+e.amount,0);
+    const autres=inv.elements.filter(e=>e.type==='autre').map(e=>`${e.lib}: ${money(e.amount)}€`).join(' | ');
+    return{
+      'Statut':r.statut,'Fichier':inv._f,'NUMPIE':inv.numpie,
+      'Réf. Facture':inv.numfact,'Réf. Locale':inv.numfactloc,
+      'Code Immeuble':inv.codimm,'Immeuble':inv.libimm,
+      'Code Locataire':inv.codcli,'Locataire':inv.nombai,
+      'Période':per(inv.periode),'Date Comptable':dt(inv.datctb),
+      'Nb Éléments':inv.elements.length,
+      'Détail Loyers/Charges HT':loyers,'Détail Autres':autres,
+      'TVA Total':+tvaTotal.toFixed(2)||'',
+      'Montant HT':inv.htTotal>0?+inv.htTotal.toFixed(2):'',
+      'Montant TTC Attendu':+inv.totalTTC.toFixed(2),'Taux TVA %':inv.vatRate,
+      'Montant TTC Encaissé':r.encTotal>0?+r.encTotal.toFixed(2):'',
+      'Écart TTC':r.ecart>0?+r.ecart.toFixed(2):0,
+      [`Fees ${fr}% (sur HT)`]:ht>0?+(ht*fr/100).toFixed(2):'',
+      'Lettrage GL':inv.allLettered?'O':'N','Num. Lettrage':inv.numlet||'',
+      'Score Match':r.topScore||0,
+      'Libellé Agicap':bks.map(b=>b.intitule).join(' | ').slice(0,150)||'',
+      'Date Encaissement':dt(bks[0]?.date),'Nb Virements':bks.length||0,
+      'Compte Bancaire':bks[0]?.compte||'',
+      'Montant Virement(s)':bks.length>0?+bks.reduce((a,b)=>a+b.montant,0).toFixed(2):'',
     };
   });
-
-  const summary = ['ENCAISSE','PARTIEL','IMPAYE','NON_IDENTIFIE'].map(s => {
-    const sub = state.results.filter(r => r.statut === s);
-    const enc = sub.reduce((a, r) => a + (r.encTotal || 0), 0);
-    const att = sub.reduce((a, r) => a + (r.gl ? r.gl.debit : 0), 0);
-    return { 'Statut': s, 'Nb': sub.length, 'Attendu TTC': +att.toFixed(2), 'Encaissé TTC': +enc.toFixed(2), 'Écart': +(att - enc).toFixed(2) };
+  const niRows=state.results.filter(r=>!r.inv).map(r=>({
+    'Statut':'NON_IDENTIFIE','Intitulé Agicap':r.bks[0]?.intitule||'',
+    'Montant':r.bks[0]?.montant||0,'Date':dt(r.bks[0]?.date),
+    'Compte':r.bks[0]?.compte||'','Catégorie':r.bks[0]?.categorie||'',
+  }));
+  const summary=['ENCAISSE','PARTIEL','IMPAYE','NON_IDENTIFIE'].map(st=>{
+    const sub=state.results.filter(r=>r.statut===st);
+    const enc=sub.reduce((a,r)=>a+(r.encTotal||0),0);
+    const att=sub.filter(r=>r.inv).reduce((a,r)=>a+r.inv.totalTTC,0);
+    return{'Statut':st,'Nb':sub.length,'Attendu TTC':+att.toFixed(2),'Encaissé TTC':+enc.toFixed(2),'Écart':+(att-enc).toFixed(2)};
   });
-
-  const impayesRows = rows.filter(r => r['Statut'] === 'IMPAYE');
-
-  const wb = XLSX.utils.book_new();
-  const ws1 = XLSX.utils.json_to_sheet(rows);
-  ws1['!cols'] = Object.keys(rows[0]||{}).map(() => ({ wch: 22 }));
-  XLSX.utils.book_append_sheet(wb, ws1, 'Réconciliation');
-  XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(summary), 'Résumé');
-  if (impayesRows.length > 0) XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(impayesRows), 'Impayés');
-
-  XLSX.writeFile(wb, `Reconciliation_Loyers_FR_${new Date().toISOString().slice(0,10)}.xlsx`);
+  const wb=XLSX.utils.book_new();
+  const ws1=XLSX.utils.json_to_sheet(mainRows);
+  ws1['!cols']=Object.keys(mainRows[0]||{}).map(()=>({wch:22}));
+  XLSX.utils.book_append_sheet(wb,ws1,'Réconciliation');
+  XLSX.utils.book_append_sheet(wb,XLSX.utils.json_to_sheet(summary),'Résumé');
+  const imp=mainRows.filter(r=>r['Statut']==='IMPAYE');
+  if(imp.length>0)XLSX.utils.book_append_sheet(wb,XLSX.utils.json_to_sheet(imp),'Impayés');
+  if(niRows.length>0)XLSX.utils.book_append_sheet(wb,XLSX.utils.json_to_sheet(niRows),'Non identifiés Agicap');
+  XLSX.writeFile(wb,`Reconciliation_Loyers_FR_${new Date().toISOString().slice(0,10)}.xlsx`);
 }
 </script>
 </body>
